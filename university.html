@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIEAS | Pakistan Institute of Engineering and Applied Sciences</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --pieas-blue: #1e3a8a;
+            --pieas-gold: #eab308;
+        }
+        body { font-family: 'Source Sans Pro', sans-serif; }
+        .font-heading { font-family: 'Playfair Display', serif; }
+        
+        /* Reveal Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .carousel-height { height: 75vh; }
+        @media (max-width: 768px) { .carousel-height { height: 50vh; } }
+
+ 
+        .bg-pieas-blue { background-color: var(--pieas-blue); }
+        .text-pieas-blue { color: var(--pieas-blue); }
+        .border-pieas-blue { border-color: var(--pieas-blue); }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+    <header class="bg-blue-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center space-x-2 shrink-0">
+                    <div class=" p-1 rounded-md">
+                        <img src="logo.png" alt="PIEAS" class="h-11 w-auto" >
+                    </div>
+                    <div class="flex flex-col border-l border-white/20 pl-2">
+                        <span class="font-heading text-xl font-bold leading-none tracking-tight">PIEAS</span>
+                        <span class="text-[10px] text-yellow-500 font-semibold tracking-widest uppercase">Islamabad</span>
+                    </div>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-2">
+                    <a href="#" class="px-4 py-2 hover:text-yellow-500 font-semibold transition-all">Home</a>
+                    
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 px-4 py-2 hover:text-yellow-500 font-semibold transition-all">
+                            Programs <i class="fa fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-64 bg-white text-blue-900 rounded-b-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border-t-4 border-yellow-500">
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100 border-b border-gray-100">Chemical Engineering</a>
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100 border-b border-gray-100">Electrical Engineering</a>
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100 border-b border-gray-100">Mechanical Engineering</a>
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100">Computer Science</a>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button class="flex items-center gap-1 px-4 py-2 hover:text-yellow-500 font-semibold transition-all">
+                            Admissions <i class="fa fa-chevron-down text-[10px] transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute top-full left-0 w-52 bg-white text-blue-900 rounded-b-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 border-t-4 border-yellow-500">
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100 border-b border-gray-100">Undergraduate</a>
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100 border-b border-gray-100">MS / MPhil</a>
+                            <a href="#" class="block px-5 py-3 hover:bg-gray-100">PhD Programs</a>
+                        </div>
+                    </div>
+
+                    
+
+                    <a href="#" class="px-4 py-2 hover:text-yellow-500 font-semibold transition-all">Research</a>
+                    <a href="#" class="px-4 py-2 hover:text-yellow-500 font-semibold transition-all">Contact</a>
+                </nav>
+
+                <div class="hidden sm:block shrink-0">
+                    <a href="#" class="bg-yellow-500 text-blue-950 px-6 py-2.5 rounded-full font-bold hover:bg-yellow-400 transition-all shadow-md">Apply Now</a>
+                </div>
+
+                <button class="lg:hidden text-white" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="hidden lg:hidden bg-blue-950 px-4 py-6 space-y-3">
+            <a href="#" class="block py-2 border-b border-blue-800">Home</a>
+            <a href="#" class="block py-2 border-b border-blue-800">Programs</a>
+            <a href="#" class="block py-2 border-b border-blue-800">Admissions</a>
+            <a href="#" class="block py-2 font-bold text-yellow-500">Apply Now</a>
+        </div>
+    </header>
+
+    <section class="relative w-full bg-slate-900 overflow-hidden">
+        <div id="carouselTrack" class="flex transition-transform duration-1000 ease-in-out">
+            <div class="min-w-full relative carousel-height">
+                <img src="slide1.png" class="w-full h-full object-cover opacity-60" onerror="this.src='https://via.placeholder.com/1920x800?text=PIEAS+Campus'">
+                <div class="absolute inset-0 flex items-center justify-center text-center">
+                    <div class="px-4">
+                        <h1 class="text-white text-4xl md:text-7xl font-bold font-heading mb-4 drop-shadow-2xl">Excellence in Technology</h1>
+                        <p class="text-yellow-500 text-lg md:text-2xl font-semibold tracking-wide uppercase">Top Ranked Engineering Institute of Pakistan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="min-w-full relative carousel-height">
+                <img src="slide2.png" class="w-full h-full object-cover opacity-60" onerror="this.src='https://via.placeholder.com/1920x800?text=Research+at+PIEAS'">
+                <div class="absolute inset-0 flex items-center justify-center text-center">
+                    <div class="px-4">
+                        <h2 class="text-white text-4xl md:text-7xl font-bold font-heading mb-4">Innovation & Research</h2>
+                        <p class="text-yellow-500 text-lg md:text-2xl font-semibold uppercase">Pioneering Solutions for Global Challenges</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="prevBtn" class="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/90 hover:text-blue-900 text-white p-4 rounded-full transition-all border border-white/20">
+            <i class="fa fa-chevron-left text-xl"></i>
+        </button>
+        <button id="nextBtn" class="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/90 hover:text-blue-900 text-white p-4 rounded-full transition-all border border-white/20">
+            <i class="fa fa-chevron-right text-xl"></i>
+        </button>
+    </section>
+
+    <main class="container mx-auto px-4 py-16">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <div class="flex-1 space-y-16">
+                
+                <section class="reveal bg-white rounded-3xl shadow-xl p-10 border-l-8 border-blue-900">
+                    <h2 class="text-3xl text-blue-900 font-bold mb-6 flex items-center gap-3">
+                        Welcome to PIEAS
+                    </h2>
+                    <div class="text-gray-600 text-lg leading-relaxed space-y-6">
+                        <p>
+                            Nestled in the serene setting of a beautiful countryside, <strong>Pakistan Institute of Engineering and Applied Sciences (PIEAS)</strong>, Islamabad, is recognized as a preeminent federal public university devoted to higher education in engineering, natural sciences, and formal sciences.
+                        </p>
+                        <p>
+                            The Institute has been consistently ranked <strong>No. 1 for Engineering & Technology</strong> by the Higher Education Commission (HEC), Pakistan. With our highly qualified faculty and excellent infrastructure, we aim to contribute to the welfare of humanity through research and development.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-2xl font-bold text-blue-900 border-b-4 border-yellow-500 pb-1">Latest Events</h2>
+                        <a href="#" class="text-blue-900 font-bold hover:text-yellow-600 transition-colors">View All →</a>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article class="reveal bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-blue-900 transition-all hover:-translate-y-2">
+                            <img src="image2.png" class="h-44 w-full object-cover" onerror="this.src='https://via.placeholder.com/400x200?text=Event+1'">
+                            <div class="p-6">
+                                <span class="text-xs font-bold text-blue-500 uppercase">Sept 09, 2025</span>
+                                <h3 class="font-bold text-lg my-2 leading-tight hover:text-blue-700 cursor-pointer">CLAD-2025 Laser Conference</h3>
+                                <p class="text-sm text-gray-500 line-clamp-3">Developments in Laser Applications and emerging technological trends in radiation sciences.</p>
+                            </div>
+                        </article>
+
+                        <article class="reveal bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-blue-900 transition-all hover:-translate-y-2">
+                            <img src="image1.png" class="h-44 w-full object-cover" onerror="this.src='https://via.placeholder.com/400x200?text=Event+2'">
+                            <div class="p-6">
+                                <span class="text-xs font-bold text-blue-500 uppercase">Aug 26, 2025</span>
+                                <h3 class="font-bold text-lg my-2 leading-tight hover:text-blue-700 cursor-pointer">CERN Science Gateway</h3>
+                                <p class="text-sm text-gray-500 line-clamp-3">Prof. Emmanuel Tsesmelis discusses the bridge between innovation and particle physics.</p>
+                            </div>
+                        </article>
+
+                        
+
+                        <article class="reveal bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-blue-900 transition-all hover:-translate-y-2">
+                            <img src="image3.png" class="h-44 w-full object-cover" onerror="this.src='https://via.placeholder.com/400x200?text=Event+3'">
+                            <div class="p-6">
+                                <span class="text-xs font-bold text-blue-500 uppercase">May 29, 2025</span>
+                                <h3 class="font-bold text-lg my-2 leading-tight hover:text-blue-700 cursor-pointer">Next-Gen Simulations</h3>
+                                <p class="text-sm text-gray-500 line-clamp-3">Integrating Machine Learning with modern Materials Modelling at the atomic level.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="grid md:grid-cols-2 gap-10">
+                    <div class="reveal">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-6 border-b-2 border-yellow-500 inline-block pb-1">Infocus</h2>
+                        <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black">
+                             <video controls class="w-full h-full object-cover">
+                                <source src="movie.mp4" type="video/mp4">
+                                Your browser does not support video.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="reveal">
+                        <h2 class="text-2xl font-bold text-blue-900 mb-6 border-b-2 border-yellow-500 inline-block pb-1">Quick Links</h2>
+                        <ul class="grid grid-cols-1 gap-3">
+                            <li><a href="#" class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm hover:shadow-md hover:text-blue-600 transition-all"><i class="fa fa-chevron-right text-yellow-500 text-xs"></i> HEC Digital Library</a></li>
+                            <li><a href="#" class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm hover:shadow-md hover:text-blue-600 transition-all"><i class="fa fa-chevron-right text-yellow-500 text-xs"></i> Official Publications</a></li>
+                            <li><a href="#" class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm hover:shadow-md hover:text-blue-600 transition-all"><i class="fa fa-chevron-right text-yellow-500 text-xs"></i> HEC Supervisors List</a></li>
+                            <li><a href="#" class="flex items-center gap-2 p-3 bg-white rounded-xl shadow-sm hover:shadow-md hover:text-blue-600 transition-all"><i class="fa fa-chevron-right text-yellow-500 text-xs"></i> Transport Info</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="lg:w-96">
+                <div class="bg-white rounded-3xl shadow-2xl p-8 sticky top-28 border border-gray-100">
+                    <h3 class="font-heading text-2xl font-bold text-blue-900 mb-8 pb-4 border-b-2 border-yellow-500">
+                        News Updates
+                    </h3>
+                    <div class="space-y-6">
+                        <a href="#" class="block group">
+                            <article class="p-4 rounded-2xl hover:bg-blue-50 transition-all border border-transparent hover:border-blue-100">
+                                <h4 class="font-bold text-blue-950 group-hover:text-yellow-600 transition-colors mb-2">
+                                    QS World University Rankings 2025: PIEAS Top in Pakistan
+                                </h4>
+                                <time class="text-xs font-bold text-blue-500 uppercase tracking-widest"><i class="fa fa-clock mr-1"></i> Dec 12, 2025</time>
+                            </article>
+                        </a>
+                        
+                        <a href="#" class="block group">
+                            <article class="p-4 rounded-2xl hover:bg-blue-50 transition-all border border-transparent hover:border-blue-100">
+                                <h4 class="font-bold text-blue-950 group-hover:text-yellow-600 transition-colors mb-2">
+                                    Admissions Open: MS/PhD for Spring Session
+                                </h4>
+                                <time class="text-xs font-bold text-blue-500 uppercase tracking-widest"><i class="fa fa-clock mr-1"></i> Dec 05, 2025</time>
+                            </article>
+                        </a>
+
+                        <a href="#" class="block group">
+                            <article class="p-4 rounded-2xl hover:bg-blue-50 transition-all border border-transparent hover:border-blue-100">
+                                <h4 class="font-bold text-blue-950 group-hover:text-yellow-600 transition-colors mb-2">
+                                    International Tech Conference (ICET) Highlights
+                                </h4>
+                                <time class="text-xs font-bold text-blue-500 uppercase tracking-widest"><i class="fa fa-clock mr-1"></i> Nov 28, 2025</time>
+                            </article>
+                        </a>
+                    </div>
+
+                    <button class="w-full mt-8 py-4 bg-blue-900 text-white font-bold rounded-2xl hover:bg-blue-800 transition-all shadow-lg">
+                        All News & Notices
+                    </button>
+                </div>
+            </aside>
+
+        </div>
+          <section class="reveal relative py-12 bg-blue-900 rounded-3xl mt-16 shadow-2xl overflow-hidden">
+            <img src="slide1.png" class="absolute inset-0 w-full h-full object-cover opacity-40" alt="Ranking Background">
+            <div class="absolute inset-0 bg-blue-950/60"></div> <div class="relative z-10 container mx-auto px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+                    <div class="space-y-1">
+                        <span class="text-3xl md:text-5xl font-bold text-yellow-500">#1</span>
+                        <p class="text-xs uppercase tracking-widest font-bold text-blue-100">HEC Ranking</p>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-3xl md:text-5xl font-bold text-yellow-500">150+</span>
+                        <p class="text-xs uppercase tracking-widest font-bold text-blue-100">PhD Faculty</p>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-3xl md:text-5xl font-bold text-yellow-500">3000+</span>
+                        <p class="text-xs uppercase tracking-widest font-bold text-blue-100">Publications</p>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="text-3xl md:text-5xl font-bold text-yellow-500">12:1</span>
+                        <p class="text-xs uppercase tracking-widest font-bold text-blue-100">Student Ratio</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-blue-950 text-white mt-12">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <img src="logo.png" alt="Logo" class="h-12  p-1 rounded mb-6">
+                    <p class="text-blue-200 text-sm leading-relaxed mb-6">
+                        PIEAS strives for excellence in teaching, research and application of Engineering & Applied Sciences for the benefit of Pakistan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center hover:bg-yellow-500 transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center hover:bg-yellow-500 transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-800 flex items-center justify-center hover:bg-yellow-500 transition-all"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6 border-b border-white/20 pb-2">Contact Us</h3>
+                    <ul class="space-y-4 text-blue-200 text-sm">
+                        <li class="flex gap-3"><i class="fa fa-map-marker-alt text-yellow-500"></i> Lehtrar Road, Islamabad, Pakistan</li>
+                        <li class="flex gap-3"><i class="fa fa-phone text-yellow-500"></i> +92 (51) 1111 74327</li>
+                        <li class="flex gap-3"><i class="fa fa-envelope text-yellow-500"></i> registrar@pieas.edu.pk</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6 border-b border-white/20 pb-2">Quick Links</h3>
+                    <ul class="grid grid-cols-2 gap-2 text-sm text-blue-200">
+                        <li><a href="#" class="hover:text-yellow-500 transition-all">Careers</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-all">Hostels</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-all">Transport</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-all">Ranking</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-all">Alumni</a></li>
+                        <li><a href="#" class="hover:text-yellow-500 transition-all">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-black/30 py-6 text-center text-xs text-blue-400">
+            © 1998 - 2025 PIEAS. All Rights Reserved. Designed for Excellence.
+        </div>
+    </footer>
+
+    <script>
+        // --- AUTO-PLAY CAROUSEL LOGIC ---
+        const track = document.getElementById('carouselTrack');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let index = 0;
+        const totalSlides = track.children.length;
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        // Auto play every 5 seconds
+        let autoPlayInterval = setInterval(nextSlide, 3000);
+
+        // Controls
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            clearInterval(autoPlayInterval);
+        });
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            clearInterval(autoPlayInterval);
+        });
+
+        // --- SCROLL REVEAL LOGIC ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, idx) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, idx * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
